@@ -3,7 +3,6 @@
 <head>
     <title>Client-Side Image Capture with Metadata</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.2/FileSaver.min.js"></scrip
 </head>
 <body>
     <select id="metadata">
@@ -11,9 +10,11 @@
         <option value="Option2">Option 2</option>
         <option value="Option3">Option 3</option>
     </select>
-    <input type="file" accept="image/*" capture="camera" id="capture" />
+    <input type="file" accept="image/*" capture="environment" id="capture" />
     <button id="save">Save Image and Metadata</button>
     <div id="download-links"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.2/FileSaver.min.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
