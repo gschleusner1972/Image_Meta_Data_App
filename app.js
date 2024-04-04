@@ -17,15 +17,11 @@ document.getElementById('save').addEventListener('click', function() {
             var metadataBlob = new Blob([JSON.stringify({ metadata: metadata })], { type: 'application/json' });
             zip.file('metadata.json', metadataBlob);
 
-            // Generate the ZIP file and create a download link
+            // Generate the ZIP file and use FileSaver.js to trigger the download
             zip.generateAsync({type: 'blob'}).then(function(content) {
-                var zipLink = document.createElement('a');
                 var timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-                zipLink.href = URL.createObjectURL(content);
-                zipLink.download = 'image-metadata-' + timestamp + '.zip';
-                zipLink.textContent = 'Download ZIP';
-                document.getElementById('download-links').innerHTML = '';
-                document.getElementById('download-links').appendChild(zipLink);
+                var filename = 'image-metadata-' + timestamp + '.zip';
+                saveAs(content, filename);
             });
         };
         reader.readAsArrayBuffer(file);
